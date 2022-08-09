@@ -1,7 +1,7 @@
 const {
-    httpBadRequestHandler,
-    httpMethodNotAllowedHandler,
-    httpFindCompanyBySymbol
+  httpBadRequestHandler,
+  httpMethodNotAllowedHandler,
+  httpFindCompanyBySymbol,
 } = require("./companies.controller");
 const express = require("express");
 const companiesRouter = express.Router();
@@ -11,8 +11,8 @@ var insert = "INSERT INTO companies (symbol, name) VALUES (?,?)";
 //Error handling
 
 companiesRouter.get("/", httpBadRequestHandler);
-companiesRouter.post("/*",httpMethodNotAllowedHandler);
-companiesRouter.put("/*",httpMethodNotAllowedHandler);
+companiesRouter.post("/*", httpMethodNotAllowedHandler);
+companiesRouter.put("/*", httpMethodNotAllowedHandler);
 //GET All Company Info
 companiesRouter.get("/all", (req, res, next) => {
   const queryLimit = req.query.limit || 20;
@@ -37,6 +37,5 @@ companiesRouter.get("/all", (req, res, next) => {
 //GET companies by symbol
 // response with today open and closed
 companiesRouter.get("/:symbol", httpFindCompanyBySymbol);
-
 
 module.exports = companiesRouter;
