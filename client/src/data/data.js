@@ -48,4 +48,13 @@ const demoCode = `fetch("https://fake-financial-data.com/api/findata/demo")
 .then(res => res.json())
 .then(json => console.log(json))`;
 
-export {demoCode,demoResult }
+const changeLogData = [
+    {
+        version: "0.1.0 (beta)",
+        date: "10 Aug, 2022",
+        content: "/companies and /findata updated"
+    },
+
+];
+
+export { demoCode, demoResult, changeLogData };

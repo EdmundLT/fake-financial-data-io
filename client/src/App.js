@@ -1,20 +1,18 @@
-import Header from "./components/Header.jsx";
-import Navbar from "./components/Navbar.jsx";
-import Try from "./components/Try.jsx";
-import Introduction from "./components/Introduction.jsx";
-import Routes from "./components/Routes.jsx";
-import Footer from "./components/Footer.jsx";
-
+import Home from "./components/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Guide from "./components/Guide/Guide";
+import Docs from "./components/Docs/Docs";
+import KnownIssue from "./components/KnownIssue/KnownIssue";
 function App() {
   return (
-    <div className="">
-      <Navbar />
-      <Header />
-      <Try />
-      <Introduction />
-      <Routes />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/guide/" element={<Guide />} />
+        <Route path="/docs/" element={<Docs />} />
+        <Route path="/known-issue/" element={<KnownIssue />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
