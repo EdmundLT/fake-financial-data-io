@@ -1,5 +1,5 @@
 const db = require("../../services/database");
-const moment = require('moment')
+const moment = require("moment");
 async function httpBadRequestHandler(req, res) {
   res.status(400).json({ status: 400, message: "Bad request" });
 }
@@ -11,7 +11,7 @@ async function httpFindCompanyBySymbol(req, res) {
   var symbol = req.params.symbol.toUpperCase();
   var query = `select * from companies c inner join today_fin_data tfd on c.symbol = tfd.symbol where c.symbol = ?`;
   db.all(query, symbol, (err, rows) => {
-    console.log(rows[0])
+    console.log(rows[0]);
     if (rows[0] != undefined) {
       if (err) {
         res.status(500).json({
