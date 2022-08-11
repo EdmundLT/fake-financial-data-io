@@ -1,16 +1,18 @@
 const db = require("../services/database");
 
-async function queryFromDatabase(symbol) {
-  var query = `select * from companies where symbol = ${symbol}`;
-  db.all(query, (err, rows) => {
-    if (err) {
-      console.log(err);
+//Function return data from database
+async function queryFromDb(symbol) {
+  var query = `select * from companies c inner join today_fin_data tfd on c.symbol = tfd.symbol where c.symbol = ?`;
+  db.all(query, symbol, (err, rows) => {
+    if (rows[0] === undefined) {
+      return  err;
     } else {
-      console.log("symbol: ",symbol)
-      return rows;
+      const result = rows[0];
+      return result;
     }
   });
 }
+
 module.exports = {
-  queryFromDatabase,
+  queryFromDb
 };

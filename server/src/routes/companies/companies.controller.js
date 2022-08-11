@@ -1,11 +1,14 @@
 const db = require("../../services/database");
 const moment = require("moment");
+const {queryFromDb} = require('../../models/companies.model')
+//http code handling
 async function httpBadRequestHandler(req, res) {
   res.status(400).json({ status: 400, message: "Bad request" });
 }
 async function httpMethodNotAllowedHandler(req, res) {
   res.status(405).json({ status: 405, message: "Method Not Allowed" });
 }
+//API: GET company by symbol
 
 async function httpFindCompanyBySymbol(req, res) {
   var symbol = req.params.symbol.toUpperCase();
@@ -49,6 +52,13 @@ async function httpFindCompanyBySymbol(req, res) {
     }
   });
 }
+// async function httpFindCompanyBySymbol(req, res){
+//   var symbol = req.params.symbol.toUpperCase();
+//   await queryFromDb(symbol).then((data)=>{
+//     console.log(data)
+//   })
+// }
+
 module.exports = {
   httpBadRequestHandler,
   httpMethodNotAllowedHandler,
