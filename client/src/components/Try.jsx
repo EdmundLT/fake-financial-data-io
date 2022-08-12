@@ -1,5 +1,5 @@
 import React from "react";
-import { Prism } from "@mantine/prism";
+// import { Prism } from "@mantine/prism";
 import { demoCode, demoResult } from "../data/data";
 
 const Try = () => {
@@ -11,7 +11,7 @@ const Try = () => {
           Using Javascript <i>fetch API</i> as example:
         </p>
       </div>
-      <div className="text-left px-6">
+      {/* <div className="text-left px-6">
         <Prism withLineNumbers language="jsx" colorScheme="dark">
           {demoCode}
         </Prism>
@@ -20,7 +20,7 @@ const Try = () => {
         <Prism withLineNumbers language="json" colorScheme="dark">
           {demoResult}
         </Prism>
-      </div>
+      </div> */}
       <p className="text-left px-6 text-xl">Congrat! This is your first fetch!</p>
     </div>
   );
