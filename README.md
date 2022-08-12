@@ -188,12 +188,15 @@ print(response.text)
 }
 
 ```
+More Details: [Postman](https://documenter.getpostman.com/view/21423086/VUjQkjEw)
 ## Route
 
 - Companies Data → `api/v1/companies`
 - Financial Data → `api/v1/findata`
 
-## How to use
+## Thanks
 
-[Postman](https://documenter.getpostman.com/view/21423086/VUjQkjEw)
+
+
+
 
