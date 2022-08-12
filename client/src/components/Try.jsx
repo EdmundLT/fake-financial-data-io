@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FadeIn from "react-fade-in";
+
 import { DemoResult } from "../data/data";
 
 const Try = () => {
@@ -24,14 +24,12 @@ const Try = () => {
           </div>
         </div>
         {showDemoResult ? (
-          <FadeIn>
-            <pre
-              className="bg-gray-200 text-black h-auto w-auto p-1 rounded-md 
+          <pre
+            className="bg-gray-200 text-black h-auto w-auto p-1 rounded-md 
           select-all"
-            >
-              {DemoResult}
-            </pre>
-          </FadeIn>
+          >
+            {DemoResult}
+          </pre>
         ) : (
           <pre
             className="bg-gray-200 text-black h-auto w-auto p-1 rounded-md 
