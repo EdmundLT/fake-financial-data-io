@@ -10,11 +10,11 @@ base url → `api/v1`
 
 - React.JS
 - Express.JS
+- Node.JS
 - SQlite
 - Tailwind CSS
 
 ### Demo
-
 
 - **GET** `api/v1/companies/all`:
 
