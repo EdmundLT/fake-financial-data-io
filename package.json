@@ -14,6 +14,6 @@
     "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix server",
     "test": "npm test --prefix server && npm test --prefix client"
   },
-  "author": "",
+  "author": "Edmund Tang",
   "license": "ISC"
 }
