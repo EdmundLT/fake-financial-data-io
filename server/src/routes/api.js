@@ -3,7 +3,7 @@ const companiesRouter = require("./companies/companies.router");
 const findataRouter = require("./findata/findata.router");
 const api = express.Router();
 
-api.use("/companies", companiesRouter);
-api.use("/findata", findataRouter);
+api.use("/v1/companies", companiesRouter);
+api.use("/v1/findata", findataRouter);
 
 module.exports = api;
