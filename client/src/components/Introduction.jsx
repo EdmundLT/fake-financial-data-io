@@ -2,7 +2,7 @@ import React from "react";
 
 const Introduction = () => {
   return (
-    <div className="container mx-auto p-2 px-6 text-left space-y-2">
+    <div className="container mx-auto px-6 text-left space-y-2">
       <p className="text-2xl font-semibold pt-8">About the API</p>
       <div className="flex justify-center py-4  pb-8 ">
         <p className="text-xl">
