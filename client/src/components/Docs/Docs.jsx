@@ -12,7 +12,7 @@ const Docs = () => {
           Info
         </p>
         <div>
-
+        
         </div>
         <p>result</p>
       </div>
