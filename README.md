@@ -2,7 +2,7 @@
 
 - This is a simple free API **randomly generating fake financial data for testing and practice.**
 
-- Real **5,715** companies from **NASDAQ** market. You can download it here: 
+- Real **5,715** companies from **NASDAQ** market. You can download it here: [NASDAQ.CSV](https://github.com/EdmundLT/fake-financial-data-io/blob/master/client/src/data/NASDAQ.csv)
 
 
 ![example workflow](https://github.com/EdmundLT/fake-financial-data-io/actions/workflows/node.js.yml/badge.svg)

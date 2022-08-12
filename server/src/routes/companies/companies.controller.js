@@ -1,6 +1,5 @@
 const db = require("../../services/database");
 const moment = require("moment");
-const {queryFromDb} = require('../../models/companies.model')
 //http code handling
 async function httpBadRequestHandler(req, res) {
   res.status(400).json({ status: 400, message: "Bad request" });
@@ -52,15 +51,31 @@ async function httpFindCompanyBySymbol(req, res) {
     }
   });
 }
-// async function httpFindCompanyBySymbol(req, res){
-//   var symbol = req.params.symbol.toUpperCase();
-//   await queryFromDb(symbol).then((data)=>{
-//     console.log(data)
-//   })
-// }
+
+async function httpGetAllCompany (req, res)  {
+  const queryLimit = req.query.limit || 20;
+  var sql = `select * from companies limit ${queryLimit}`;
+  var params = [];
+  db.all(sql, params, (err, rows) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    res.json({
+      meta: {
+        status: 200,
+        message: "success",
+        quoteLimit: queryLimit,
+      },
+      companies: rows,
+    });
+  });
+};
+
 
 module.exports = {
   httpBadRequestHandler,
   httpMethodNotAllowedHandler,
   httpFindCompanyBySymbol,
+  httpGetAllCompany
 };
