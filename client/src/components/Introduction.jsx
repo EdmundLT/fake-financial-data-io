@@ -8,15 +8,20 @@ const Introduction = () => {
         <p>
           The API included <b>5,715</b> companies from NASDAQ market. The
           completed companies list can be downloaded&nbsp;
-          <a href={require('../data/NASDAQ.csv')} className="underline text-blue-500">
+          <a
+            href={require("../data/NASDAQ.csv")}
+            className="underline text-blue-500"
+          >
             here
           </a>
           . The financial data are generated <b>randomly</b>. Read{" "}
-          <a href="/guide/" className="underline text-blue-500">
+          {/* <a href="/guide/" className="underline text-blue-500">
             guide
-          </a> and <a href="/docs/" className="underline text-blue-500">
+          </a> and  */}
+          <a href="/docs/" className="underline text-blue-500">
             documentation
-          </a> to get details.
+          </a>{" "}
+          to get details.
         </p>
       </div>
     </div>
