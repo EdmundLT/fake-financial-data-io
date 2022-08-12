@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "09b9dac4-413d-4087-be30-458d6e9a8782",
+		"name": "Fake Financial Data API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "21423086"
+	},
+	"item": [
+		{
+			"name": "All Company Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/companies/all?limit=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"companies",
+						"all"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "",
+							"description": "optional, default=20"
+						}
+					]
+				},
+				"description": "**Demo** **`GET /api/companies/all`**\n\n``` json\n{\n    \"meta\": {\n        \"status\": 200,\n        \"message\": \"success\",\n        \"quoteLimit\": 20\n    },\n    \"companies\": [\n        {\n            \"symbol\": \"AACG\",\n            \"name\": \"Ata Creativity Global ADR\"\n        },\n        {\n            \"symbol\": \"AADI\",\n            \"name\": \"Aadi Biosciences Inc\"\n        },\n        {\n            \"symbol\": \"AADR\",\n            \"name\": \"Advisorshares Dorsey Wright ETF\"\n        },\n        {\n            \"symbol\": \"AAL\",\n            \"name\": \"American Airlines Gp\"\n        },\n        {\n            \"symbol\": \"AACI\",\n            \"name\": \"Armada Acquisition Corp I\"\n        },\n        {\n            \"symbol\": \"AAOI\",\n            \"name\": \"Applied Optoelect\"\n        },\n        {\n            \"symbol\": \"AAON\",\n            \"name\": \"Aaon Inc\"\n        },\n        {\n            \"symbol\": \"AAPL\",\n            \"name\": \"Apple Inc\"\n        },\n        {\n            \"symbol\": \"AACIU\",\n            \"name\": \"Armada Acquisition Corp I\"\n        },\n        {\n            \"symbol\": \"AAWW\",\n            \"name\": \"Atlas Air Ww\"\n        },\n        {\n            \"symbol\": \"AAXJ\",\n            \"name\": \"All Country Asia Ex Japan Ishares MSCI ETF\"\n        },\n        {\n            \"symbol\": \"ABCB\",\n            \"name\": \"Ameris Bancorp\"\n        },\n        {\n            \"symbol\": \"ABCL\",\n            \"name\": \"Abcellera Biologics Inc\"\n        },\n        {\n            \"symbol\": \"ABCM\",\n            \"name\": \"Abcam Plc ADR\"\n        },\n        {\n            \"symbol\": \"ABEO\",\n            \"name\": \"Abeona Therapeutics\"\n        },\n        {\n            \"symbol\": \"ABGI\",\n            \"name\": \"Abg Acquisition Corp I Cl A\"\n        },\n        {\n            \"symbol\": \"ABIO\",\n            \"name\": \"Arca Biopharma Inc\"\n        },\n        {\n            \"symbol\": \"ABMD\",\n            \"name\": \"Abiomed Inc\"\n        },\n        {\n            \"symbol\": \"ABNB\",\n            \"name\": \"Airbnb Inc Cl A\"\n        },\n        {\n            \"symbol\": \"ABOS\",\n            \"name\": \"Acumen Pharmaceuticals Inc\"\n        }\n    ]\n}\n\n```\n\n**Demo** **`GET api/companies/all?limit=5`**\n\n``` json\n{\n    \"meta\": {\n        \"status\": 200,\n        \"message\": \"success\",\n        \"quoteLimit\": \"5\"\n    },\n    \"companies\": [\n        {\n            \"symbol\": \"AACG\",\n            \"name\": \"Ata Creativity Global ADR\"\n        },\n        {\n            \"symbol\": \"AADI\",\n            \"name\": \"Aadi Biosciences Inc\"\n        },\n        {\n            \"symbol\": \"AADR\",\n            \"name\": \"Advisorshares Dorsey Wright ETF\"\n        },\n        {\n            \"symbol\": \"AAL\",\n            \"name\": \"American Airlines Gp\"\n        },\n        {\n            \"symbol\": \"AACI\",\n            \"name\": \"Armada Acquisition Corp I\"\n        }\n    ]\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Company by symbol",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000/api/companies/",
+				"description": "**URL:** **`api/companies/{symbol}`**\n\n**DEMO Valid symbol****`GET api/companies/aapl`**\n\n``` javascript\n{\n    \"meta\": {\n        \"status\": 200,\n        \"message\": \"success\",\n        \"method\": \"GET company name and today's price by symbol\",\n        \"company\": {\n            \"symbol\": \"AAPL\",\n            \"name\": \"Apple Inc\"\n        }\n    },\n    \"data\": {\n        \"date\": \"2022-08-10T15:37:00-04:00\",\n        \"open\": 163.21,\n        \"close\": 165.35,\n        \"high\": 165.85,\n        \"low\": 163\n    }\n}\n\n```\n\n**DEMO GET Invalid symbol** **`api/companies/abcde`**\n\n``` json\n{\n    \"status\": 404,\n    \"symbol\": \"ABCDE\",\n    \"message\": \"No record in database\"\n}\n\n```\n\n**DEMO GET No input** **`api/companies/`**\n\n``` json\n{\n    \"status\": 400,\n    \"message\": \"Bad request\"\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Demo Financial Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000/api/findata/demo",
+				"description": "**DEMO GET** **`api/findata/demo`**\n\n``` json\n{\n    \"meta\": {\n        \"status\": 200,\n        \"message\": \"success\",\n        \"method\": \"Demo Get financial Data\",\n        \"symbol\": \"AAPL\",\n        \"name\": \"Apple Inc\"\n    },\n    \"data\": [\n        {\n            \"date\": \"2022-08-09T15:42:17-04:00\",\n            \"open\": 102.36293312588928,\n            \"close\": 105.05248875457298,\n            \"high\": 107.8615936907871,\n            \"low\": 100.93504302074298\n        },\n        {\n            \"date\": \"2022-08-08T15:42:17-04:00\",\n            \"open\": 113.08687960420922,\n            \"close\": 111.48703595440848,\n            \"high\": 114.02792383122022,\n            \"low\": 106.42568459401132\n        },\n        {\n            \"date\": \"2022-08-07T15:42:17-04:00\",\n            \"open\": 110.94548278336737,\n            \"close\": 111.72297791336356,\n            \"high\": 111.84681574816344,\n            \"low\": 110.85805614958966\n        },\n        {\n            \"date\": \"2022-08-06T15:42:17-04:00\",\n            \"open\": 111.84849214738463,\n            \"close\": 113.2497843949569,\n            \"high\": 113.27872318949912,\n            \"low\": 107.17340367485905\n        },\n        {\n            \"date\": \"2022-08-05T15:42:17-04:00\",\n            \"open\": 105.8053950747854,\n            \"close\": 112.16276947401646,\n            \"high\": 112.56011987989935,\n            \"low\": 105.39039490926184\n        }\n    ]\n}\n\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Financial data by symbol",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/findata/abcde?days",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"findata",
+						"abcde"
+					],
+					"query": [
+						{
+							"key": "days",
+							"value": null,
+							"description": "optional, default=10"
+						}
+					]
+				},
+				"description": "**DEMO Valid symbol** **`api/findata/tsla`**\n\n``` json\n{\n    \"meta\": {\n        \"status\": 200,\n        \"message\": \"success\",\n        \"method\": \"GET Finanial Data by Symbol\",\n        \"days\": 10,\n        \"company\": {\n            \"symbol\": \"TSLA\",\n            \"name\": \"Tesla Inc\"\n        }\n    },\n    \"data\": [\n        {\n            \"date\": \"2022-08-09T15:46:19-04:00\",\n            \"open\": 102.67236599213999,\n            \"close\": 104.10022326969339,\n            \"high\": 104.64914242622199,\n            \"low\": 102.47885978067669\n        },\n        {\n            \"date\": \"2022-08-08T15:46:19-04:00\",\n            \"open\": 110.05032729151019,\n            \"close\": 108.05805896678078,\n            \"high\": 110.89389334901318,\n            \"low\": 101.33957155491028\n        },\n        {\n            \"date\": \"2022-08-07T15:46:19-04:00\",\n            \"open\": 127.24268123308617,\n            \"close\": 128.92000262175034,\n            \"high\": 128.94786200299495,\n            \"low\": 125.96091261656797\n        },\n        {\n            \"date\": \"2022-08-06T15:46:19-04:00\",\n            \"open\": 116.61036016298937,\n            \"close\": 116.61154603633284,\n            \"high\": 116.7247866968039,\n            \"low\": 116.58450116199599\n        },\n        {\n            \"date\": \"2022-08-05T15:46:19-04:00\",\n            \"open\": 129.95331330694506,\n            \"close\": 131.73851495278006,\n            \"high\": 132.5691213679812,\n            \"low\": 128.8118689695745\n        },\n        {\n            \"date\": \"2022-08-04T15:46:19-04:00\",\n            \"open\": 111.69805601234997,\n            \"close\": 112.6109541667686,\n            \"high\": 112.77292702420522,\n            \"low\": 111.43755388580149\n        },\n        {\n            \"date\": \"2022-08-03T15:46:19-04:00\",\n            \"open\": 112.17213282213247,\n            \"close\": 109.93140626783297,\n            \"high\": 113.87833370134184,\n            \"low\": 109.65490889182391\n        },\n        {\n            \"date\": \"2022-08-02T15:46:19-04:00\",\n            \"open\": 104.11047422070406,\n            \"close\": 103.63438820599826,\n            \"high\": 104.5743900031376,\n            \"low\": 102.62493894631042\n        },\n        {\n            \"date\": \"2022-08-01T15:46:19-04:00\",\n            \"open\": 114.21996738350958,\n            \"close\": 112.81089335585862,\n            \"high\": 114.53545175673766,\n            \"low\": 108.09498317791136\n        },\n        {\n            \"date\": \"2022-07-31T15:46:19-04:00\",\n            \"open\": 120.74578767385587,\n            \"close\": 116.41232076073523,\n            \"high\": 122.84097317909541,\n            \"low\": 116.29631349559506\n        }\n    ]\n}\n\n```\n\n**DEMO Invalid symbol** **`api/findata/abcde`**\n\n``` json\n{\n    \"status\": 400,\n    \"message\": \"Bad request\",\n    \"description\": \"Symbol not found in our Database\"\n}\n\n```"
+			},
+			"response": []
+		}
+	]
+}
