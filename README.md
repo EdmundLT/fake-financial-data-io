@@ -1,6 +1,6 @@
 # Welcome to Fake Financial Data - A free API for testing and data analysis practice.
 
-- This is a free API **randomly generating fake financial data for testing and practice.**
+- This is a simple free API **randomly generating fake financial data for testing and practice.**
 
 - Real **5,715** companies from **NASDAQ** market. You can download it here: 
 
@@ -195,5 +195,5 @@ print(response.text)
 
 ## How to use
 
-https://documenter.getpostman.com/view/21423086/VUjQkjEw#a137062e-35e3-4ede-98a7-8b6a1561b956
+https://documenter.getpostman.com/view/21423086/VUjQkjEw
 
