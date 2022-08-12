@@ -21,7 +21,7 @@ base url → `api/v1`
 ```jsx title="src/pages/my-react-page.js"
 import requests
 
-url = "http://localhost:8000/api/companies/all?limit="
+url = "http://localhost:8000/api/v1/companies/all?limit="
 
 payload={}
 headers = {}
@@ -127,7 +127,7 @@ print(response.text)
 ```jsx title="src/pages/my-react-page.js"
 import requests
 
-url = "http://localhost:8000/api/findata/demo"
+url = "http://localhost:8000/api/v1/findata/demo"
 
 payload={}
 headers = {}
@@ -195,5 +195,5 @@ print(response.text)
 
 ## How to use
 
-https://documenter.getpostman.com/view/21423086/VUjQkjEw
+[Postman](https://documenter.getpostman.com/view/21423086/VUjQkjEw)
 
