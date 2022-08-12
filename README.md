@@ -5,7 +5,8 @@
 - Real **5,715** companies from **NASDAQ** market. You can download it here: 
 
 base url → `api/v1`
-[![Build][build-badge]][build]
+![example workflow](https://github.com/EdmundLT/fake-financial-data-io/actions/workflows/node.js.yml/badge.svg)
+
 ## Stacks I used
 
 - React.JS
