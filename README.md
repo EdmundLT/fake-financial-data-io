@@ -1,6 +1,7 @@
 # Welcome to Fake Financial Data - A free API for testing and data analysis practice.
 
 This is a free API **randomly generating fake financial data for testing and practice.**
+Real 5,715 companies from NASDAQ market. You can download it here: 
 
 ## Stacks I used
 
@@ -13,7 +14,7 @@ This is a free API **randomly generating fake financial data for testing and pra
 
 base url → `api/v1`
 
-Calling **GET** `api/vi/companies/all`:
+Calling **GET** `api/v1/companies/all`:
 
 ```jsx title="src/pages/my-react-page.js"
 import requests
@@ -119,7 +120,11 @@ print(response.text)
     ]
 }
 ```
-## Generate a new site
+## Route
+
+- Companies Data → `api/v1/companies`
+- Financial Data → `api/v1/findata`
+
 
 Generate a new Docusaurus site using the **classic template**.
 
