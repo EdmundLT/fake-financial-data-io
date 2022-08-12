@@ -24,7 +24,6 @@
     "md5": "^2.3.0",
     "moment": "^2.29.4",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.19",
     "sqlite3": "^5.0.11"
   },
   "devDependencies": {
