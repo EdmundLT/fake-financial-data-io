@@ -11,7 +11,7 @@ This is a free API **randomly generating fake financial data for testing and pra
 
 ### Demo
 
-- base url → `api/v1/`
+base url → `api/v1`
 
 Calling **GET** `api/vi/companies/all`:
 
@@ -27,7 +27,98 @@ response = requests.request("GET", url, headers=headers, data=payload)
 
 print(response.text)
 ```
-
+👇results:
+```
+{
+    "meta": {
+        "status": 200,
+        "message": "success",
+        "quoteLimit": 20
+    },
+    "companies": [
+        {
+            "symbol": "AACG",
+            "name": "Ata Creativity Global ADR"
+        },
+        {
+            "symbol": "AADI",
+            "name": "Aadi Biosciences Inc"
+        },
+        {
+            "symbol": "AADR",
+            "name": "Advisorshares Dorsey Wright ETF"
+        },
+        {
+            "symbol": "AAL",
+            "name": "American Airlines Gp"
+        },
+        {
+            "symbol": "AACI",
+            "name": "Armada Acquisition Corp I"
+        },
+        {
+            "symbol": "AAOI",
+            "name": "Applied Optoelect"
+        },
+        {
+            "symbol": "AAON",
+            "name": "Aaon Inc"
+        },
+        {
+            "symbol": "AAPL",
+            "name": "Apple Inc"
+        },
+        {
+            "symbol": "AACIU",
+            "name": "Armada Acquisition Corp I"
+        },
+        {
+            "symbol": "AAWW",
+            "name": "Atlas Air Ww"
+        },
+        {
+            "symbol": "AAXJ",
+            "name": "All Country Asia Ex Japan Ishares MSCI ETF"
+        },
+        {
+            "symbol": "ABCB",
+            "name": "Ameris Bancorp"
+        },
+        {
+            "symbol": "ABCL",
+            "name": "Abcellera Biologics Inc"
+        },
+        {
+            "symbol": "ABCM",
+            "name": "Abcam Plc ADR"
+        },
+        {
+            "symbol": "ABEO",
+            "name": "Abeona Therapeutics"
+        },
+        {
+            "symbol": "ABGI",
+            "name": "Abg Acquisition Corp I Cl A"
+        },
+        {
+            "symbol": "ABIO",
+            "name": "Arca Biopharma Inc"
+        },
+        {
+            "symbol": "ABMD",
+            "name": "Abiomed Inc"
+        },
+        {
+            "symbol": "ABNB",
+            "name": "Airbnb Inc Cl A"
+        },
+        {
+            "symbol": "ABOS",
+            "name": "Acumen Pharmaceuticals Inc"
+        }
+    ]
+}
+```
 ## Generate a new site
 
 Generate a new Docusaurus site using the **classic template**.
