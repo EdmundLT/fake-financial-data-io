@@ -5,7 +5,7 @@
 - Real **5,715** companies from **NASDAQ** market. You can download it here: 
 
 base url → `api/v1`
-
+[![Build][build-badge]][build]
 ## Stacks I used
 
 - React.JS
