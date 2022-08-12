@@ -1,7 +1,6 @@
 import React from "react";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
-const URL = "http://localhst:8000";
 const Docs = () => {
   return (
     <div className="bg-gray-800 text-white">
