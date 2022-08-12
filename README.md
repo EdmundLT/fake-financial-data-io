@@ -9,12 +9,24 @@ This is a free API **randomly generating fake financial data for testing and pra
 - SQlite
 - Tailwind CSS
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+### Demo
 
-### What you'll need
+- base url → `api/v1/`
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+Calling **GET** `api/vi/companies/all`:
+
+```jsx title="src/pages/my-react-page.js"
+import requests
+
+url = "http://localhost:8000/api/companies/all?limit="
+
+payload={}
+headers = {}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
+```
 
 ## Generate a new site
 
