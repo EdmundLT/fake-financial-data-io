@@ -1,10 +1,13 @@
-# Fake Financial API
+# Welcome to Fake Financial Data - A free API for testing and data analysis practice.
 
 This is a free API **randomly generating fake financial data for testing and practice.**
 
-## Getting Started
+## Stacks I used
 
-Get started by **creating a new site**.
+- React.JS
+- Express.JS
+- SQlite
+- Tailwind CSS
 
 Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
 
