@@ -16,7 +16,7 @@ base url → `api/v1`
 ### Demo
 
 
-**GET** `api/v1/companies/all`:
+- **GET** `api/v1/companies/all`:
 
 ```jsx title="src/pages/my-react-page.js"
 import requests
@@ -123,7 +123,7 @@ print(response.text)
 }
 ```
 
-**GET** `api/v1/findata/demo`
+- **GET** `api/v1/findata/demo`
 ```jsx title="src/pages/my-react-page.js"
 import requests
 
