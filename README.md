@@ -7,7 +7,7 @@
 
 ![example workflow](https://github.com/EdmundLT/fake-financial-data-io/actions/workflows/node.js.yml/badge.svg)
 
-base url → `api/v1`
+base url → `http://ffd-api.click/api/v1`
 
 ## Stacks I used
 
