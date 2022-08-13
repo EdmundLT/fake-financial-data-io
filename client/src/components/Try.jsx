@@ -11,7 +11,7 @@ const Try = () => {
         <p className="text-3xl font-semibold pt-8 pb-4">Demo</p>
         <p className="pb-2">Method: <b className="text-green-500">GET</b></p>
         <pre className="bg-gray-200 text-black p-1 rounded-md select-all">
-          &nbsp;http://localhost:8000/api/v1/findata/demo
+          &nbsp;https://fake-financial-data-io.vercel.app/api/v1/findata/demo
         </pre>
         <div className="py-6 flex justify-center">
           <div

@@ -1,4 +1,4 @@
-const URL = "http://localhost:8000"
+const URL = "https://fake-financial-data-io.vercel.app/"
 const DemoResult = `{
     "meta": {
         "status": 200,
