@@ -19,7 +19,7 @@ const Introduction = () => {
             guide
           </a> and  */}
           <a href="/docs/" className="underline text-blue-500">
-            documentation
+            Guide
           </a>{" "}
           to get details.
         </p>

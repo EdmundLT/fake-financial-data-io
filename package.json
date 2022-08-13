@@ -4,6 +4,7 @@
   "description": "A free API generate fake financial data for testing and development.",
   "main": "index.js",
   "scripts": {
+    "vercel-deploy": "vercel dev",
     "install-server": "npm install --prefix server",
     "install-client": "npm install --prefix client",
     "install": "npm run install-server & npm run install-client",
@@ -15,5 +16,6 @@
     "test": "npm test --prefix server && npm test --prefix client"
   },
   "author": "Edmund Tang",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {}
 }

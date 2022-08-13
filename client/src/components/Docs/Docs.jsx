@@ -1,19 +1,24 @@
 import React from "react";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
+import {DocsData} from "../../data/data"
+import CodeBlock from "./CodeBlock"
 const Docs = () => {
   return (
     <div className="bg-gray-800 text-white">
       <Navbar />
       <div className="grid grid-cols-1 mx-auto container space-y-4 px-6">
-        <p className="text-3xl py-4">Fake Financial Data API</p>
-        <p className="text-left font-semibold">
-          <span className=" text-green-500">GET</span> All Company Info
-        </p>
-        <div>
-          
-        </div>
-        <p>result</p>
+        {DocsData.map((demo, index)=> {
+          return (
+            <CodeBlock 
+              key={index}
+              method={demo.method}
+              methodDescription={demo.methodDescription}
+              url={demo.url}
+              result={demo.result}
+            />
+          )
+        })}
       </div>
       <Footer />
     </div>

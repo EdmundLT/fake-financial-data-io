@@ -19,11 +19,11 @@ const Navbar = () => {
           <p>Guide</p>
         </a> */}
         <a href="/docs/">
-          <p>Documentation</p>
+          <p>Guides</p>
         </a>
-        {/* <a href="/known-issue/">
-          <p>Known Issues</p>
-        </a> */}
+        <a href="https://github.com/EdmundLT/fake-financial-data-io">
+          <p>Github</p>
+        </a>
       </div>
     </div>
   );

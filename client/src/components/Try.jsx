@@ -4,11 +4,12 @@ import { DemoResult } from "../data/data";
 
 const Try = () => {
   const [showDemoResult, setShowDemoResult] = useState(false);
+
   return (
     <div className="container mx-auto p-2 text-center space-y-4">
       <div className="text-left px-6">
         <p className="text-3xl font-semibold pt-8 pb-4">Demo</p>
-        <p className="pb-2">Try</p>
+        <p className="pb-2">Method: <b className="text-green-500">GET</b></p>
         <pre className="bg-gray-200 text-black p-1 rounded-md select-all">
           &nbsp;http://localhost:8000/api/v1/findata/demo
         </pre>
@@ -39,7 +40,7 @@ const Try = () => {
       </div>
 
       <p className="text-left px-6 text-xl">
-        Congrat! This is your first fetch!
+        🎉 Congrat! This is your first fetch!
       </p>
     </div>
   );
