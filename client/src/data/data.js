@@ -1,4 +1,4 @@
-const URL = "https://fake-financial-data-io.vercel.app/"
+const URL = "http://ffd-api.click"
 const DemoResult = `{
     "meta": {
         "status": 200,
