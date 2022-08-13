@@ -2,7 +2,7 @@ import React from "react";
 import { SiSqlite, SiExpress, SiReact, SiNodedotjs } from "react-icons/si";
 const Header = () => {
   return (
-    <div className="container mx-auto p-2 text-center space-y-6">
+    <div className="container mx-auto py-40 text-center space-y-6">
       <p className="text-2xl pt-10">
         Want a free API to test your stock Application or Data Analysis?
       </p>

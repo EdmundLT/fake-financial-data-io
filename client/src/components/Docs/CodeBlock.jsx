@@ -1,6 +1,6 @@
 import React from "react";
 
-const CodeBlock = ({method, methodDescription, url, result}) => {
+const CodeBlock = ({ method, methodDescription, url, result, note }) => {
   return (
     <div className="container mx-auto p-4">
       <p className="text-left font-semibold pb-4">
@@ -16,6 +16,12 @@ const CodeBlock = ({method, methodDescription, url, result}) => {
         <pre className="bg-gray-200 text-black p-1 rounded-md select-all">
           {result}
         </pre>
+        {note && (
+          <p className="p-2">
+            <b className="text-red-200">Note: </b>
+            {note}
+          </p>
+        )}
       </div>
     </div>
   );

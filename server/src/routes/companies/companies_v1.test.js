@@ -27,3 +27,14 @@ describe("Test POST /api/v1/companies/", () => {
       .expect(405);
   });
 });
+
+describe("Test POST /api/v1/companies/add", () => {
+  test("It is a valid request, should respond with 201 Created", async () => {
+    const company = {symbol: "TSMC", name: "Taiwan Semiconductor"}
+    const response = await request(app)
+    .post("/api/v1/companies/add")
+    .send(company)
+    .expect("Content-Type", /json/)
+    .expect(201);
+  });
+});

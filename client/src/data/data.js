@@ -1,4 +1,4 @@
-const URL = "http://ffd-api.click"
+const URL = "http://ffd-api.click";
 const DemoResult = `{
     "meta": {
         "status": 200,
@@ -54,6 +54,11 @@ const changeLogData = [
     version: "0.1.0 (beta)",
     date: "10 Aug, 2022",
     content: "/companies and /findata updated",
+  },
+  {
+    version: "0.2.0 (beta)",
+    date: "13 Aug, 2022",
+    content: "Post /companies/add created",
   },
 ];
 
@@ -178,6 +183,23 @@ const DocsData = [
         }`,
   },
   {
+    method: "POST",
+    methodDescription: "Add Company to Database",
+    url: `${URL}/api/v1/companies/add`,
+    shortUrl: "/api/v1/companies/add",
+    result: `{
+          "meta": {
+              "status": 201,
+              "message": "Created",
+              "company": {
+                  "symbol": "TSMC",
+                  "name": "Taiwan Semiconductor"
+              }
+          }
+      }`,
+    note: "the data will not be really updated to database, but it will response wih 201 Created.",
+  },
+  {
     method: "GET",
     methodDescription: "Demo Financial Data",
     url: `${URL}/api/v1/findata/demo`,
@@ -235,91 +257,55 @@ const DocsData = [
     url: `${URL}/api/v1/findata/aapl?days=5`,
     shortUrl: "/api/v1/findata/aapl",
     result: `{
-            "meta": {
-                "status": 200,
-                "message": "success",
-                "method": "GET Finanial Data by Symbol",
-                "days": 10,
-                "company": {
-                    "symbol": "AAPL",
-                    "name": "Apple Inc"
-                }
+        "meta": {
+            "status": 200,
+            "message": "success",
+            "method": "GET Finanial Data by Symbol",
+            "days": "5",
+            "company": {
+                "symbol": "AAPL",
+                "name": "Apple Inc"
+            }
+        },
+        "data": [
+            {
+                "date": "2022-08-12T18:10:57+00:00",
+                "open": 120.10489171284372,
+                "close": 119.18754923927378,
+                "high": 120.66693145509038,
+                "low": 118.97503380651433
             },
-            "data": [
-                {
-                    "date": "2022-08-11T19:39:31-04:00",
-                    "open": 138.14347006630226,
-                    "close": 137.30268427885736,
-                    "high": 138.3225748132819,
-                    "low": 132.96225555570754
-                },
-                {
-                    "date": "2022-08-10T19:39:31-04:00",
-                    "open": 114.07981850137277,
-                    "close": 114.14075565839028,
-                    "high": 114.63103274645664,
-                    "low": 114.01653378985576
-                },
-                {
-                    "date": "2022-08-09T19:39:31-04:00",
-                    "open": 124.05881452308924,
-                    "close": 124.4714385243516,
-                    "high": 125.16625825317305,
-                    "low": 117.62714075485763
-                },
-                {
-                    "date": "2022-08-08T19:39:31-04:00",
-                    "open": 133.45373243695082,
-                    "close": 133.7562765266824,
-                    "high": 134.16063730224704,
-                    "low": 132.58025114528488
-                },
-                {
-                    "date": "2022-08-07T19:39:31-04:00",
-                    "open": 134.31865527762744,
-                    "close": 134.13271692980678,
-                    "high": 135.10332531357747,
-                    "low": 134.05401285395396
-                },
-                {
-                    "date": "2022-08-06T19:39:31-04:00",
-                    "open": 138.9928802666889,
-                    "close": 137.6072149371239,
-                    "high": 139.8483139488288,
-                    "low": 136.6992435917652
-                },
-                {
-                    "date": "2022-08-05T19:39:31-04:00",
-                    "open": 132.16403593187715,
-                    "close": 131.63932412155776,
-                    "high": 133.96392514760421,
-                    "low": 126.64480168792312
-                },
-                {
-                    "date": "2022-08-04T19:39:31-04:00",
-                    "open": 111.47488313510475,
-                    "close": 111.24828542205161,
-                    "high": 117.53119765792552,
-                    "low": 110.15847769983363
-                },
-                {
-                    "date": "2022-08-03T19:39:31-04:00",
-                    "open": 120.07655033896695,
-                    "close": 117.47169239730482,
-                    "high": 120.08702045599321,
-                    "low": 114.15212091598816
-                },
-                {
-                    "date": "2022-08-02T19:39:31-04:00",
-                    "open": 112.54011326744221,
-                    "close": 113.74296560268863,
-                    "high": 113.94527251203941,
-                    "low": 110.81531180749074
-                }
-            ]
-        }`,
+            {
+                "date": "2022-08-11T18:10:57+00:00",
+                "open": 104.73012100094932,
+                "close": 105.17922980855695,
+                "high": 105.50654697487828,
+                "low": 104.19941246737953
+            },
+            {
+                "date": "2022-08-10T18:10:57+00:00",
+                "open": 115.8363965226732,
+                "close": 114.13638597266794,
+                "high": 117.36606373256386,
+                "low": 113.99230585151629
+            },
+            {
+                "date": "2022-08-09T18:10:57+00:00",
+                "open": 114.99953319042612,
+                "close": 115.36651853284293,
+                "high": 115.4788941237416,
+                "low": 114.83612511513014
+            },
+            {
+                "date": "2022-08-08T18:10:57+00:00",
+                "open": 112.75447961875483,
+                "close": 113.29090926794115,
+                "high": 115.74839619690088,
+                "low": 108.17478059201511
+            }
+        ]
+    }`,
   },
 ];
-
 
 export { URL, demoCode, DemoResult, changeLogData, DocsData };

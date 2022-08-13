@@ -72,10 +72,22 @@ async function httpGetAllCompany (req, res)  {
   });
 };
 
+async function httpPostAddCompany (req, res) {
+  const company = req.body
+  res.status(201).json({
+    meta: {
+      status: 201,
+      message: "Created",
+      company,
+    }
+
+  })
+}
 
 module.exports = {
   httpBadRequestHandler,
   httpMethodNotAllowedHandler,
   httpFindCompanyBySymbol,
-  httpGetAllCompany
+  httpGetAllCompany,
+  httpPostAddCompany
 };

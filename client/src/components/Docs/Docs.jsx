@@ -16,6 +16,7 @@ const Docs = () => {
               methodDescription={demo.methodDescription}
               url={demo.url}
               result={demo.result}
+              note={demo.note}
             />
           )
         })}
