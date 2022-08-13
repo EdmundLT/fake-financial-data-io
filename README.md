@@ -24,7 +24,7 @@ base url → `api/v1`
 ```jsx title="src/pages/my-react-page.js"
 import requests
 
-url = "http://localhost:8000/api/v1/companies/all?limit="
+url = "http://ffd-api.click/api/v1/companies/all?limit="
 
 payload={}
 headers = {}
@@ -130,7 +130,7 @@ print(response.text)
 ```jsx title="src/pages/my-react-page.js"
 import requests
 
-url = "http://localhost:8000/api/v1/findata/demo"
+url = "http://ffd-api.click/api/v1/findata/demo"
 
 payload={}
 headers = {}
