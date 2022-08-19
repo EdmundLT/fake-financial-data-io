@@ -60,103 +60,53 @@ const changeLogData = [
     date: "13 Aug, 2022",
     content: "Post /companies/add created",
   },
+  {
+    version: "0.3.0 (beta)",
+    date: "18 Aug, 2022",
+    content: "Delete companies/delete/:symbol created",
+  },
+  {
+    version: "0.3.1 (beta)",
+    date: "18 Aug, 2022",
+    content: "Get /companies/all change default quoteLimit to 5",
+  },
 ];
 
 const DocsData = [
   {
     method: "GET",
-    methodDescription: "All Company Info (limit (optional), default=20)",
+    methodDescription: "All Company Info (limit (optional), default=5)",
     url: `${URL}/api/v1/companies/all?limit=`,
     shortUrl: "/api/v1/companies/all",
     result: `{
-            "meta": {
-                "status": 200,
-                "message": "success",
-                "quoteLimit": 20
+        "meta": {
+            "status": 200,
+            "message": "success",
+            "quoteLimit": 5
+        },
+        "companies": [
+            {
+                "symbol": "AACG",
+                "name": "Ata Creativity Global ADR"
             },
-            "companies": [
-                {
-                    "symbol": "AACG",
-                    "name": "Ata Creativity Global ADR"
-                },
-                {
-                    "symbol": "AADI",
-                    "name": "Aadi Biosciences Inc"
-                },
-                {
-                    "symbol": "AADR",
-                    "name": "Advisorshares Dorsey Wright ETF"
-                },
-                {
-                    "symbol": "AAL",
-                    "name": "American Airlines Gp"
-                },
-                {
-                    "symbol": "AACI",
-                    "name": "Armada Acquisition Corp I"
-                },
-                {
-                    "symbol": "AAOI",
-                    "name": "Applied Optoelect"
-                },
-                {
-                    "symbol": "AAON",
-                    "name": "Aaon Inc"
-                },
-                {
-                    "symbol": "AAPL",
-                    "name": "Apple Inc"
-                },
-                {
-                    "symbol": "AACIU",
-                    "name": "Armada Acquisition Corp I"
-                },
-                {
-                    "symbol": "AAWW",
-                    "name": "Atlas Air Ww"
-                },
-                {
-                    "symbol": "AAXJ",
-                    "name": "All Country Asia Ex Japan Ishares MSCI ETF"
-                },
-                {
-                    "symbol": "ABCB",
-                    "name": "Ameris Bancorp"
-                },
-                {
-                    "symbol": "ABCL",
-                    "name": "Abcellera Biologics Inc"
-                },
-                {
-                    "symbol": "ABCM",
-                    "name": "Abcam Plc ADR"
-                },
-                {
-                    "symbol": "ABEO",
-                    "name": "Abeona Therapeutics"
-                },
-                {
-                    "symbol": "ABGI",
-                    "name": "Abg Acquisition Corp I Cl A"
-                },
-                {
-                    "symbol": "ABIO",
-                    "name": "Arca Biopharma Inc"
-                },
-                {
-                    "symbol": "ABMD",
-                    "name": "Abiomed Inc"
-                },
-                {
-                    "symbol": "ABNB",
-                    "name": "Airbnb Inc Cl A"
-                },
-                {
-                    "symbol": "ABOS",
-                    "name": "Acumen Pharmaceuticals Inc"
-                }
-            ]
-        }`,
+            {
+                "symbol": "AADI",
+                "name": "Aadi Biosciences Inc"
+            },
+            {
+                "symbol": "AADR",
+                "name": "Advisorshares Dorsey Wright ETF"
+            },
+            {
+                "symbol": "AAL",
+                "name": "American Airlines Gp"
+            },
+            {
+                "symbol": "AACI",
+                "name": "Armada Acquisition Corp I"
+            }
+        ]
+    }`,
   },
   {
     method: "GET",
@@ -198,6 +148,23 @@ const DocsData = [
           }
       }`,
     note: "the data will not be really updated to database, but it will response wih 201 Created.",
+  },
+  {
+    method: "DELETE",
+    methodDescription: "DELETE Company from Database",
+    url: `${URL}/api/v1/companies/delete/aapl`,
+    shortUrl: "/api/v1/companies/delete/:symbol",
+    result: `{
+        "meta": {
+            "status": 202,
+            "message": "Accpeted"
+        },
+        "company": {
+            "symbol": "TSLA",
+            "name": "Tesla Inc"
+        }
+    }`,
+    note: "the data will not be really deleted in database, but it will response wih 202 Accepted.",
   },
   {
     method: "GET",

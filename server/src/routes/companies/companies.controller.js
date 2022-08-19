@@ -52,8 +52,8 @@ async function httpFindCompanyBySymbol(req, res) {
   });
 }
 
-async function httpGetAllCompany (req, res)  {
-  const queryLimit = req.query.limit || 20;
+async function httpGetAllCompany(req, res) {
+  const queryLimit = req.query.limit || 5;
   var sql = `select * from companies limit ${queryLimit}`;
   var params = [];
   db.all(sql, params, (err, rows) => {
@@ -70,24 +70,51 @@ async function httpGetAllCompany (req, res)  {
       companies: rows,
     });
   });
-};
-
-async function httpPostAddCompany (req, res) {
-  const company = req.body
-  res.status(201).json({
-    meta: {
-      status: 201,
-      message: "Created",
-      company,
-    }
-
-  })
 }
 
+async function httpPostAddCompany(req, res) {
+  const company = req.body;
+  if (company) {
+    console.log(company);
+    res.status(201).json({
+      meta: {
+        status: 201,
+        message: "Created",
+        company,
+      },
+    });
+  }
+}
+
+async function httpDeleteCompanyBySymbol(req, res) {
+  const deleteSymbol = req.params.symbol.toUpperCase();
+  var query = `select * from companies c where c.symbol = ?`;
+  db.all(query, deleteSymbol, (err, rows) => {
+    const result = rows[0];
+    if (result != undefined) {
+      res.status(202).json({
+        meta: {
+          status: 202,
+          message: "Accpeted",
+        },
+        company: result,
+      });
+    } else {
+      res.status(404).json({
+        meta: {
+          status: 404,
+          message: "Symbol Not Found in Database",
+        },
+        company: result,
+      });
+    }
+  });
+}
 module.exports = {
   httpBadRequestHandler,
   httpMethodNotAllowedHandler,
   httpFindCompanyBySymbol,
   httpGetAllCompany,
-  httpPostAddCompany
+  httpPostAddCompany,
+  httpDeleteCompanyBySymbol,
 };
