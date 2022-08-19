@@ -38,3 +38,12 @@ describe("Test POST /api/v1/companies/add", () => {
     .expect(201);
   });
 });
+describe("Test Delete /api/v1/companies/delete/:symbol", () => {
+  test("It is a valid request, should respond with 202 Created", async () => {
+    const symbol = "aapl"
+    const response = await request(app)
+    .delete(`/api/v1/companies/delete/${symbol}`)
+    .expect("Content-Type", /json/)
+    .expect(202);
+  });
+});
