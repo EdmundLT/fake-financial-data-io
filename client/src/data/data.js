@@ -152,7 +152,7 @@ const DocsData = [
   {
     method: "DELETE",
     methodDescription: "DELETE Company from Database",
-    url: `${URL}/api/v1/companies/delete/aapl`,
+    url: `${URL}/api/v1/companies/delete/tsla`,
     shortUrl: "/api/v1/companies/delete/:symbol",
     result: `{
         "meta": {
