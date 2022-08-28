@@ -13,7 +13,6 @@ async function httpFindCompanyBySymbol(req, res) {
   var symbol = req.params.symbol.toUpperCase();
   var query = `select * from companies c inner join today_fin_data tfd on c.symbol = tfd.symbol where c.symbol = ?`;
   db.all(query, symbol, (err, rows) => {
-    console.log(rows[0]);
     if (rows[0] != undefined) {
       if (err) {
         res.status(500).json({
@@ -22,7 +21,6 @@ async function httpFindCompanyBySymbol(req, res) {
           message: "Internal Server Error",
         });
       } else {
-        console.log("symbol: ", symbol);
         res.status(200).json({
           meta: {
             status: 200,

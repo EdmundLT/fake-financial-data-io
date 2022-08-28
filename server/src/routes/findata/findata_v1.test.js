@@ -3,7 +3,7 @@ const app = require("../../app");
 
 describe("Test GET /api/v1/findata/demo", () => {
   test("It is a financial Data Demo request, should respond with 200 success", async () => {
-    const response = await request(app)
+    const res = await request(app)
       .get("/api/v1/findata/demo")
       .expect("Content-Type", /json/)
       .expect(200);

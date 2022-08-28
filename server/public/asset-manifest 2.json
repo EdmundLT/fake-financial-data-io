@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9328e9fc.css",
+    "main.js": "/static/js/main.6f106e51.js",
+    "static/media/NASDAQ.csv": "/static/media/NASDAQ.6a6e2f41f74ff7e85766.csv",
+    "index.html": "/index.html",
+    "main.9328e9fc.css.map": "/static/css/main.9328e9fc.css.map",
+    "main.6f106e51.js.map": "/static/js/main.6f106e51.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9328e9fc.css",
+    "static/js/main.6f106e51.js"
+  ]
+}
