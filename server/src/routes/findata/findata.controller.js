@@ -14,7 +14,7 @@ async function httpMethodNotAllowedHandler(req, res) {
 }
 
 async function httpGetDemoFinData(req, res) {
-  createRandomobject(100, 120, 5).then((data) => {
+  createRandomobject(100, 5).then((data) => {
     res.status(200).json({
       meta: {
         status: 200,
@@ -41,8 +41,9 @@ async function httpGetFinData(req, res) {
         description: "Symbol not found in our Database",
       });
     } else {
-      let min = console.log("random min max: ", min, max);
-      createRandomobject(min, max, days).then((data) => {
+      let base = 100;
+      console.log("random base:", base);
+      createRandomobject(base, days).then((data) => {
         res.status(200).json({
           meta: {
             status: 200,
