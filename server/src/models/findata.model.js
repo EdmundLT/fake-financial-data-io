@@ -1,7 +1,7 @@
 const moment = require("moment");
 
-function getRandomFloat(min, max) {
-  return Math.random() * (max - min) + min;
+function getRandomFloat(base) {
+  return Math.random() * (base + 40 - base) + base;
 }
 
 function getRandomProperty(obj) {
@@ -10,16 +10,16 @@ function getRandomProperty(obj) {
   return keys[Math.floor(Math.random() * keys.length)];
 }
 
-async function createRandomobject(min, max, count) {
+async function createRandomobject(base, count) {
   const findata = [];
   let todayDate = moment();
   for (let i = 0; i < count; i++) {
     //low
-    var low = getRandomFloat(min, max);
-    var high = getRandomFloat(min, max);
-    while (high < low || high - low > 10) {
-      low = getRandomFloat(min, max);
-      high = getRandomFloat(min, max);
+    var low = getRandomFloat(base);
+    var high = low + 40;
+    while (high < low) {
+      low = getRandomFloat(base);
+      high = low + 30;
     }
     todayDate = todayDate.add(-1, "day");
     const databyDay = {

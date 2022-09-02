@@ -1,8 +1,5 @@
-const {
-  createRandomobject,
-} = require("../../models/findata.model");
+const { createRandomobject } = require("../../models/findata.model");
 const db = require("../../services/database");
-
 
 async function httpBadRequestHandler(req, res) {
   res.status(400).json({
@@ -44,9 +41,7 @@ async function httpGetFinData(req, res) {
         description: "Symbol not found in our Database",
       });
     } else {
-      let min = 100;
-      let max = 140;
-      console.log("random min max: ", min, max);
+      let min = console.log("random min max: ", min, max);
       createRandomobject(min, max, days).then((data) => {
         res.status(200).json({
           meta: {
