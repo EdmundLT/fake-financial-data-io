@@ -1,4 +1,7 @@
-const { createRandomobject } = require("../../models/findata.model");
+const {
+  createRandomobject,
+  selectRandomBase,
+} = require("../../models/findata.model");
 const db = require("../../services/database");
 
 async function httpBadRequestHandler(req, res) {
@@ -14,7 +17,8 @@ async function httpMethodNotAllowedHandler(req, res) {
 }
 
 async function httpGetDemoFinData(req, res) {
-  createRandomobject(100, 5).then((data) => {
+  const base = selectRandomBase();
+  createRandomobject(base, 5).then((data) => {
     res.status(200).json({
       meta: {
         status: 200,
@@ -33,7 +37,6 @@ async function httpGetFinData(req, res) {
   const symbol = req.params.symbol.toUpperCase();
   var query = `select * from companies c where c.symbol = ?`;
   db.all(query, symbol, (err, rows) => {
-    console.log("row0: ", rows[0]);
     if (rows[0] === undefined) {
       res.status(400).json({
         status: 400,
@@ -41,7 +44,7 @@ async function httpGetFinData(req, res) {
         description: "Symbol not found in our Database",
       });
     } else {
-      let base = 100;
+      const base = selectRandomBase();
       console.log("random base:", base);
       createRandomobject(base, days).then((data) => {
         res.status(200).json({
