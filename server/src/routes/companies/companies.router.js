@@ -4,12 +4,10 @@ const {
   httpFindCompanyBySymbol,
   httpGetAllCompany,
   httpPostAddCompany,
-  httpDeleteCompanyBySymbol
+  httpDeleteCompanyBySymbol,
 } = require("./companies.controller");
 const express = require("express");
 const companiesRouter = express.Router();
-
-
 
 companiesRouter.get("/all", httpGetAllCompany);
 companiesRouter.post("/add", httpPostAddCompany);
@@ -21,7 +19,8 @@ companiesRouter.get("/:symbol", httpFindCompanyBySymbol);
 
 //Error handling
 companiesRouter.get("/", httpBadRequestHandler);
-companiesRouter.post("/*", httpMethodNotAllowedHandler);
-companiesRouter.put("/*", httpMethodNotAllowedHandler);
+companiesRouter
+  .post("/*", httpMethodNotAllowedHandler)
+  .put("/*", httpMethodNotAllowedHandler);
 
 module.exports = companiesRouter;

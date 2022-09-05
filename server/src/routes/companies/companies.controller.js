@@ -7,11 +7,11 @@ async function httpBadRequestHandler(req, res) {
 async function httpMethodNotAllowedHandler(req, res) {
   res.status(405).json({ status: 405, message: "Method Not Allowed" });
 }
-//API: GET company by symbol
 
+//API: GET company by symbol
 async function httpFindCompanyBySymbol(req, res) {
-  var symbol = req.params.symbol.toUpperCase();
-  var query = `select * from companies c inner join today_fin_data tfd on c.symbol = tfd.symbol where c.symbol = ?`;
+  const symbol = req.params.symbol.toUpperCase();
+  const query = `select * from companies c inner join today_fin_data tfd on c.symbol = tfd.symbol where c.symbol = ?`;
   db.all(query, symbol, (err, rows) => {
     if (rows[0] != undefined) {
       if (err) {
@@ -52,24 +52,23 @@ async function httpFindCompanyBySymbol(req, res) {
 
 async function httpGetAllCompany(req, res) {
   const queryLimit = req.query.limit || 5;
-  var sql = `select * from companies limit ${queryLimit}`;
+  const sql = `select * from companies limit ${queryLimit}`;
   var params = [];
   db.all(sql, params, (err, rows) => {
     if (err) {
       res.status(400).json({ error: err.message });
-      return;
+    } else {
+      res.json({
+        meta: {
+          status: 200,
+          message: "success",
+          quoteLimit: queryLimit,
+        },
+        companies: rows,
+      });
     }
-    res.json({
-      meta: {
-        status: 200,
-        message: "success",
-        quoteLimit: queryLimit,
-      },
-      companies: rows,
-    });
   });
 }
-
 async function httpPostAddCompany(req, res) {
   const company = req.body;
   if (company) {

@@ -3,7 +3,6 @@ const moment = require("moment");
 function getRandomFloat(base) {
   const num = Math.random() * (base + 20 - base) + base;
   const float = Math.round(num * 1000) / 1000;
-
   return float;
 }
 
@@ -18,11 +17,14 @@ function getRandomProperty(obj) {
   return keys[Math.floor(Math.random() * keys.length)];
 }
 
-async function createRandomobject(base, count) {
-  const findata = [];
+function calculateFactor(base) {
+  const factor = (base / 10) * (Math.random(1, 2) + 0.5);
+  return factor;
+}
+
+function generateData(base, factor, count) {
   let todayDate = moment();
-  const factor = base / 10 * (Math.random(1, 2) + 0.5)
-  console.log(Math.random(1, 2) + 0.5);
+  const findataList = [];
   for (let i = 0; i < count; i++) {
     //low
     var low = getRandomFloat(base);
@@ -39,9 +41,13 @@ async function createRandomobject(base, count) {
       high: high,
       low: low,
     };
-    findata.push(databyDay);
+    findataList.push(databyDay);
   }
-
+  return findataList;
+}
+async function createRandomobject(base, count) {
+  const factor = calculateFactor(base);
+  const findata = generateData(base, factor, count);
   return findata;
 }
 
