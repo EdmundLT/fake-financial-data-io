@@ -38,9 +38,9 @@ async function httpGetFinData(req, res) {
   var query = `select * from companies c where c.symbol = ?`;
   db.all(query, symbol, (err, rows) => {
     if (rows[0] === undefined) {
-      res.status(400).json({
-        status: 400,
-        message: "Bad request",
+      res.status(404).json({
+        status: 404,
+        message: "Not found",
         description: "Symbol not found in our Database",
       });
     } else {
