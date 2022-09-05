@@ -36,7 +36,7 @@ describe("Invalid GET", () => {
         .expect(400);
     }));
   describe("Test GET /api/v1/findata/abcde", () =>
-    test("It is invalid request (symbol entered but not existed in database), should respond with 200 Success", async () => {
+    test("It is invalid request (symbol entered but not existed in database), should respond with 404 Not found", async () => {
       const req = "abcde";
       await request(app)
         .get(`/api/v1/findata/${req}`)

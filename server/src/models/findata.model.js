@@ -1,4 +1,14 @@
 const moment = require("moment");
+const db = require("../services/pgdb/index");
+
+async function getOneCompanyFin(symbol) {
+  const query =
+    "select * from companies c inner join today_fin_data tfd on c.symbol = tfd.symbol where c.symbol = $1";
+  const params = [symbol];
+  const results = await db.query(query, params);
+  return results;
+}
+
 
 function getRandomFloat(base) {
   const num = Math.random() * (base + 20 - base) + base;
@@ -55,4 +65,5 @@ module.exports = {
   createRandomobject,
   getRandomProperty,
   selectRandomBase,
+  getOneCompanyFin
 };

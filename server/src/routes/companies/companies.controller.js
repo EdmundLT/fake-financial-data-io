@@ -1,5 +1,10 @@
-const db = require("../../services/database");
-const moment = require("moment");
+const db = require("../../services/pgdb/index");
+const {
+  getAllCompanies,
+  getOneCompany,
+  
+} = require("../../models/companies.model");
+const { validateSymbol } = require("../../utils/symbolValidation");
 //http code handling
 async function httpBadRequestHandler(req, res) {
   res.status(400).json({ status: 400, message: "Bad request" });
@@ -7,68 +12,55 @@ async function httpBadRequestHandler(req, res) {
 async function httpMethodNotAllowedHandler(req, res) {
   res.status(405).json({ status: 405, message: "Method Not Allowed" });
 }
-
+//GET ALL COMPANIES
+async function httpGetAllCompany(req, res) {
+  const queryLimit = req.query.limit || 5;
+  const results = await getAllCompanies(queryLimit);
+  const data = results.rows;
+  res.status(200).json({
+    meta: {
+      status: 200,
+      message: "success",
+      quoteLimit: 5,
+    },
+    data,
+  });
+}
 //API: GET company by symbol
 async function httpFindCompanyBySymbol(req, res) {
   const symbol = req.params.symbol.toUpperCase();
-  const query = `select * from companies c inner join today_fin_data tfd on c.symbol = tfd.symbol where c.symbol = ?`;
-  db.all(query, symbol, (err, rows) => {
-    if (rows[0] != undefined) {
-      if (err) {
-        res.status(500).json({
-          status: 500,
-          symbol: symbol,
-          message: "Internal Server Error",
-        });
-      } else {
-        res.status(200).json({
-          meta: {
-            status: 200,
-            message: "success",
-            method: "GET company name and today's price by symbol",
-            company: {
-              symbol: rows[0].symbol,
-              name: rows[0].name,
-            },
-          },
-          data: {
-            date: moment().format(),
-            open: rows[0].Open,
-            close: rows[0].Close,
-            high: rows[0].High,
-            low: rows[0].Low,
-          },
-        });
-      }
-    } else {
-      res.status(404).json({
-        status: 404,
-        symbol: symbol,
-        message: "No record in database",
-      });
-    }
-  });
+  const validation = await validateSymbol(symbol);
+  if (validation) {
+    const results = await getOneCompany(symbol);
+    const data = results.rows[0];
+    const companyData = {
+      symbol: data.symbol,
+      name: data.name,
+    };
+    const tdyFinData = {
+      open: data.open,
+      high: data.high,
+      low: data.low,
+      close: data.close,
+      volume: data.volume,
+    };
+    res.json({
+      meta: {
+        status: 200,
+        message: "success",
+        method: "GET company name and today's price by symbol",
+      },
+      data: { company: companyData, Today: tdyFinData },
+    });
+  } else {
+    res.status(404).json({
+      status: 404,
+      symbol: symbol,
+      message: "No record in database",
+    });
+  }
 }
 
-async function httpGetAllCompany(req, res) {
-  const queryLimit = req.query.limit || 5;
-  const sql = `select * from companies limit ${queryLimit}`;
-  var params = [];
-  db.all(sql, params, (err, rows) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-    } else {
-      res.json({
-        meta: {
-          status: 200,
-          message: "success",
-          quoteLimit: queryLimit,
-        },
-        companies: rows,
-      });
-    }
-  });
-}
 async function httpPostAddCompany(req, res) {
   const company = req.body;
   if (company) {
@@ -85,27 +77,19 @@ async function httpPostAddCompany(req, res) {
 
 async function httpDeleteCompanyBySymbol(req, res) {
   const deleteSymbol = req.params.symbol.toUpperCase();
-  var query = `select * from companies c where c.symbol = ?`;
-  db.all(query, deleteSymbol, (err, rows) => {
-    const result = rows[0];
-    if (result != undefined) {
-      res.status(202).json({
-        meta: {
-          status: 202,
-          message: "Accpeted",
-        },
-        company: result,
-      });
-    } else {
-      res.status(404).json({
-        meta: {
-          status: 404,
-          message: "Symbol Not Found in Database",
-        },
-        company: result,
-      });
-    }
-  });
+  const validation = await validateSymbol(deleteSymbol);
+  if (validation) {
+    //symbol existed
+    const results = await getOneCompany(deleteSymbol);
+    const data = results.rows[0]
+    res.status(202).json({
+      meta: {
+        status: 202,
+        message: "Accpeted",
+      },
+      data,
+    });
+  }
 }
 module.exports = {
   httpBadRequestHandler,

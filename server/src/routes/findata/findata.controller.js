@@ -1,8 +1,9 @@
 const {
   createRandomobject,
   selectRandomBase,
+  getOneCompanyFin,
 } = require("../../models/findata.model");
-const db = require("../../services/database");
+const { validateSymbol } = require("../../utils/symbolValidation");
 
 async function httpBadRequestHandler(req, res) {
   res.status(400).json({
@@ -35,31 +36,36 @@ async function httpGetDemoFinData(req, res) {
 async function httpGetFinData(req, res) {
   const days = req.query.days || 10;
   const symbol = req.params.symbol.toUpperCase();
-  var query = `select * from companies c where c.symbol = ?`;
-  db.all(query, symbol, (err, rows) => {
-    if (rows[0] === undefined) {
-      res.status(404).json({
-        status: 404,
-        message: "Not found",
-        description: "Symbol not found in our Database",
+  const validation = await validateSymbol(symbol);
+  if (validation) {
+    const results = await getOneCompanyFin(symbol);
+    const comData = {
+      symbol: results.rows[0].symbol,
+      name: results.rows[0].name,
+    };
+    const base = selectRandomBase();
+    console.log("random base:", base);
+    createRandomobject(base, days).then((data) => {
+      res.status(200).json({
+        meta: {
+          status: 200,
+          message: "success",
+          method: "GET Finanial Data by Symbol",
+          days: days,
+        },
+        data: {
+          company: comData,
+          data,
+        },
       });
-    } else {
-      const base = selectRandomBase();
-      console.log("random base:", base);
-      createRandomobject(base, days).then((data) => {
-        res.status(200).json({
-          meta: {
-            status: 200,
-            message: "success",
-            method: "GET Finanial Data by Symbol",
-            days: days,
-            company: rows[0],
-          },
-          data: data,
-        });
-      });
-    }
-  });
+    });
+  } else {
+    res.status(404).json({
+      status: 404,
+      message: "Not Found",
+      description: "Symbol not found in our Database",
+    });
+  }
 }
 
 module.exports = {
