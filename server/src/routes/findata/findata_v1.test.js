@@ -9,7 +9,6 @@ describe("Test GET /api/v1/findata/demo", () => {
       .expect(200);
   });
 });
-
 describe("Test GET /api/v1/findata/aapl", () =>
   test("It is valid request (symbol entered and found in database), should respond with 200 Success", async () => {
     await request(app)

@@ -65,5 +65,6 @@ module.exports = {
   createRandomobject,
   getRandomProperty,
   selectRandomBase,
-  getOneCompanyFin
+  getOneCompanyFin,
+  getRandomFloat
 };

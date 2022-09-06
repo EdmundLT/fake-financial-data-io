@@ -12,3 +12,4 @@ async function validateSymbol(symbol) {
 module.exports = {
     validateSymbol,
 }
+
