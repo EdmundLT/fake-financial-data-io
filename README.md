@@ -14,7 +14,7 @@ base url → `http://ffd-api.click/api/v1`
 - React.JS
 - Express.JS
 - Node.JS
-- SQlite
+- PostgreSQL
 - Tailwind CSS
 
 ### Demo
