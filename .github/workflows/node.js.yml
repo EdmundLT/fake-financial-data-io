@@ -11,6 +11,11 @@ jobs:
   build:
     env:
       CI: true
+      PGHOST: {secret.PGHOST}
+      PGUSER: {secret.PGUSER}
+      PGDATABASE: {secret.PGDATABASE}
+      PGPASSWORD: {secret.PGPASSWORD}
+      PGPORT: {secret.PGPORT}
     strategy:
       matrix:
         node-version: [14.x, 16.x]
