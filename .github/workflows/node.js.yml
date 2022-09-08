@@ -11,11 +11,11 @@ jobs:
   build:
     env:
       CI: true
-      PGHOST: ${{secret.PGHOST}}
-      PGUSER: ${{secret.PGUSER}}
-      PGDATABASE: ${{secret.PGDATABASE}}
-      PGPASSWORD: ${{secret.PGPASSWORD}}
-      PGPORT: ${secret.PGPORT}}
+      PGHOST: fake-financial-data-api.c4hzctuzdiuw.us-east-1.rds.amazonaws.com
+      PGUSER: ffd
+      PGDATABASE: ffd
+      PGPASSWORD: ffd19980921
+      PGPORT: 5432
     strategy:
       matrix:
         node-version: [14.x, 16.x]
