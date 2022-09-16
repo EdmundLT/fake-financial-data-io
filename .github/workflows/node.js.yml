@@ -11,7 +11,7 @@ jobs:
   build:
     env:
       CI: true
-      PGHOST: ${{ secrets.SECRETS_FILE_CONTENT }}
+      PGHOST: ${{ secrets.HOST }}
       PGUSER: ${{ secrets.PGUSER }}
       PGDATABASE: ${{ secrets.PGDATABASE }}
       PGPASSWORD: ${{ secrets.PGPASSWORD }}
