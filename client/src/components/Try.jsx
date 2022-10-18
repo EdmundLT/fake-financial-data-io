@@ -9,10 +9,21 @@ const Try = () => {
     <div className="container mx-auto p-2 text-center space-y-4">
       <div className="text-left px-6">
         <p className="text-3xl font-semibold pt-8 pb-4">Demo</p>
-        <p className="pb-2">Method: <b className="text-green-500">GET</b></p>
-        <pre className="bg-gray-200 text-black p-1 rounded-md select-all">
-          &nbsp;http://ffd-api.click/api/v1/findata/demo
-        </pre>
+        <p className="pb-2">
+          Method: <b className="text-green-500">GET</b>
+        </p>
+        <div className="mockup-code">
+          <pre data-prefix="$">
+            <code>http://ffd-api.click/api/v1/findata/demo</code>
+          </pre>
+          <pre data-prefix=">" className="text-warning">
+            <code>fetching...</code>
+          </pre>
+          <pre data-prefix=">" className="text-success">
+            <code>done!</code>
+          </pre>
+        </div>
+      
         <div className="py-6 flex justify-center">
           <div
             className=" bg-green-500 w-40 text-center rounded-full p-2

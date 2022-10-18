@@ -70,6 +70,11 @@ const changeLogData = [
     date: "18 Aug, 2022",
     content: "Get /companies/all change default quoteLimit to 5",
   },
+  {
+    version: "1.0.0",
+    date: "18 Oct, 2022",
+    content: "UI Updated",
+  },
 ];
 
 const DocsData = [
