@@ -36,34 +36,53 @@ async function httpGetDemoFinData(req, res) {
 async function httpGetFinData(req, res) {
   const days = req.query.days || 10;
   const symbol = req.params.symbol.toUpperCase();
-  const validation = await validateSymbol(symbol);
-  if (validation) {
+  
+  try {
+    const validation = await validateSymbol(symbol);
+    if (!validation) {
+      return res.status(404).json({
+        status: 404,
+        message: "Not Found",
+        description: "Symbol not found in our Database",
+      });
+    }
+
     const results = await getOneCompanyFin(symbol);
+    if (results.length === 0) {
+      return res.status(404).json({
+        status: 404,
+        message: "Not Found",
+        description: "No financial data found for the given symbol",
+      });
+    }
+
     const comData = {
-      symbol: results.rows[0].symbol,
-      name: results.rows[0].name,
+      symbol: results[0].symbol,
+      name: results[0].name,
     };
+
     const base = selectRandomBase();
     console.log("random base:", base);
-    createRandomobject(base, days).then((data) => {
-      res.status(200).json({
-        meta: {
-          status: 200,
-          message: "success",
-          method: "GET Finanial Data by Symbol",
-          days: days,
-        },
-        data: {
-          company: comData,
-          data,
-        },
-      });
+
+    const data = await createRandomobject(base, days);
+
+    res.status(200).json({
+      meta: {
+        status: 200,
+        message: "success",
+        method: "GET Financial Data by Symbol",
+        days: days,
+      },
+      data: {
+        company: comData,
+        data,
+      },
     });
-  } else {
-    res.status(404).json({
-      status: 404,
-      message: "Not Found",
-      description: "Symbol not found in our Database",
+  } catch (error) {
+    console.error("Error processing financial data:", error);
+    res.status(500).json({
+      status: 500,
+      message: "Internal Server Error",
     });
   }
 }

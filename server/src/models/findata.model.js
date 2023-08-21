@@ -3,11 +3,18 @@ const db = require("../services/pgdb/index");
 
 async function getOneCompanyFin(symbol) {
   const query =
-    "select * from companies c inner join today_fin_data tfd on c.symbol = tfd.symbol where c.symbol = $1";
+    "SELECT * FROM companies c INNER JOIN today_fin_data tfd ON c.symbol = tfd.symbol WHERE c.symbol = ?";
   const params = [symbol];
-  const results = await db.query(query, params);
-  return results;
+  
+  try {
+    const [results, fields] = await db.execute(query, params);
+    return results;
+  } catch (error) {
+    console.error("Error fetching company financial data:", error);
+    throw error; // Re-throw the error to be caught by the caller
+  }
 }
+
 
 
 function getRandomFloat(base) {

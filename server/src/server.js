@@ -9,8 +9,8 @@ const SERVER = http.createServer(app);
 
 async function startServer() {
   connectPGDB();
-  // insertCompaniesCsvToDatabase();
-  // insertFinDataCsvToDatabase();
+  // await insertCompaniesCsvToDatabase();
+  // await insertFinDataCsvToDatabase();
   SERVER.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
   });

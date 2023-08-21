@@ -16,7 +16,7 @@ async function httpMethodNotAllowedHandler(req, res) {
 async function httpGetAllCompany(req, res) {
   const queryLimit = req.query.limit || 5;
   const results = await getAllCompanies(queryLimit);
-  const data = results.rows;
+  const data = results;
   res.status(200).json({
     meta: {
       status: 200,
@@ -29,34 +29,51 @@ async function httpGetAllCompany(req, res) {
 //API: GET company by symbol
 async function httpFindCompanyBySymbol(req, res) {
   const symbol = req.params.symbol.toUpperCase();
-  const validation = await validateSymbol(symbol);
-  if (validation) {
-    const results = await getOneCompany(symbol);
-    const data = results.rows[0];
-    const companyData = {
-      symbol: data.symbol,
-      name: data.name,
-    };
-    const tdyFinData = {
-      open: data.open,
-      high: data.high,
-      low: data.low,
-      close: data.close,
-      volume: data.volume,
-    };
-    res.json({
-      meta: {
-        status: 200,
-        message: "success",
-        method: "GET company name and today's price by symbol",
-      },
-      data: { company: companyData, Today: tdyFinData },
-    });
-  } else {
-    res.status(404).json({
-      status: 404,
-      symbol: symbol,
-      message: "No record in database",
+
+  try {
+    const validation = await validateSymbol(symbol);
+    if (validation) {
+      const result = await getOneCompany(symbol);
+      if (result && result.length > 0) {
+        const data = result[0];
+        const companyData = {
+          symbol: data.symbol,
+          name: data.name,
+        };
+        const tdyFinData = {
+          open: data.open,
+          high: data.high,
+          low: data.low,
+          close: data.close,
+          volume: data.volume,
+        };
+        res.json({
+          meta: {
+            status: 200,
+            message: "success",
+            method: "GET company name and today's price by symbol",
+          },
+          data: { company: companyData, Today: tdyFinData },
+        });
+      } else {
+        res.status(404).json({
+          status: 404,
+          symbol: symbol,
+          message: "No record in database",
+        });
+      }
+    } else {
+      res.status(404).json({
+        status: 404,
+        symbol: symbol,
+        message: "Symbol validation failed",
+      });
+    }
+  } catch (error) {
+    console.error("Error fetching company data:", error);
+    res.status(500).json({
+      status: 500,
+      message: "Internal server error",
     });
   }
 }
